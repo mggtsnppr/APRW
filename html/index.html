@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>АПЖД</title>
+		<link rel="stylesheet" href="css/base.css">
+	</head>
+	<body>
+		<div class="table">
+			<div class="cell">
+				<canvas class="canvas" id="cnv" width="1920" height="1080">Ставь нормальный браузер</canvas>
+			</div>
+		</div>
+		<div class="buttons">
+			<p>
+				<input id="string1" type="text" value="  АБАК-ПРЕСС-ЖЕЛЕЗНЫЕ-ДОРОГИ" maxlength="30" size="30"/>
+				<select id="color1">
+					<option value="#d00">красный</option>
+					<option value="#dd0" selected>желтый</option>
+					<option value="#0d0">зеленый</option>
+					<option value="#00d">синий</option>
+				</select>
+			</p>
+			<p>
+				<input id="string2" type="text" value="       ПРАЗДНИЧНЫЙ РЕЙС" maxlength="30" size="30"/>
+				<select id="color2">
+					<option value="#d00" selected>красный</option>
+					<option value="#dd0">желтый</option>
+					<option value="#0d0">зеленый</option>
+					<option value="#00d">синий</option>
+				</select>
+			</p>
+		</div>
+		<script src="js/abc.js"></script>
+		<script src="js/color_luminance.js"></script>
+		<script src="js/led_table.js"></script>
+		<script>
+			var cnv = document.getElementById('cnv').getContext('2d');
+			var string = new LedString(300, 300, '#dd0', 5, 2.5, 1.5, 30);
+			string.setValue('  АБАК-ПРЕСС-ЖЕЛЕЗНЫЕ-ДОРОГИ');
+			string.show(cnv);
+			var string2 = new LedString(300, 370, '#d00', 5, 2.5, 1.5, 30);
+			string2.setValue('       ПРАЗДНИЧНЫЙ РЕЙС');
+			string2.show(cnv);
+
+			document.getElementById('string1').onkeyup = function() {
+				string.setValue(this.value);
+				string.show(cnv);
+			};
+			document.getElementById('string2').onkeyup = function() {
+				string2.setValue(this.value);
+				string2.show(cnv);
+			};
+			document.getElementById('color1').onchange = function() {
+				string.setColor(this.value);
+				string.show(cnv);
+			};
+			document.getElementById('color2').onchange = function() {
+				string2.setColor(this.value);
+				string2.show(cnv);
+			};
+		</script>
+	</body>
+</html>
