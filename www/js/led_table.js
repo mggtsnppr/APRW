@@ -138,6 +138,58 @@ LedString.prototype = {
 	}
 };
 
+function LedTableRow(x, y, baseColor, size, onRadius, offRadius) {
+	this.strings = [
+		new LedString(x, y, baseColor, size, onRadius, offRadius, 18),
+		new LedString(x, y + 10 * size, baseColor, size, onRadius, offRadius, 18),
+		new LedString(x + size * 19 * 8, y, baseColor, size, onRadius, offRadius, 5),
+		new LedString(x + size * 25 * 8, y, baseColor, size, onRadius, offRadius, 5),
+		new LedString(x + size * 31 * 8, y, baseColor, size, onRadius, offRadius, 3),
+		new LedString(x + size * 35 * 8, y, baseColor, size, onRadius, offRadius, 10)
+	];
+}
+LedTableRow.prototype = {
+	getString: function(index) {
+		if (this.strings[index]) {
+			return this.strings[index];
+		} else {
+			return false;
+		}
+	},
+	setValues: function(strings) {
+		var i;
+		for (i = 0; i < strings.length; i++) {
+			if (this.strings[i]) {
+				this.strings[i].setValue(strings[i]);
+			}
+		}
+	},
+	render: function(canvas) {
+		var i;
+		for (i = 0; i < this.strings.length; i++) {
+			this.strings[i].render(canvas);
+		}
+	},
+	show: function(canvas) {
+		var i;
+		for (i = 0; i < this.strings.length; i++) {
+			this.strings[i].show(canvas);
+		}
+	},
+	hide: function(canvas) {
+		var i;
+		for (i = 0; i < this.strings.length; i++) {
+			this.strings[i].hide(canvas);
+		}
+	},
+	setColor: function(color) {
+		var i;
+		for (i = 0; i < this.length; i++) {
+			this.chars[i].setColor(color);
+		}
+	}
+};
+
 function LedTable(options) {
 	this.canvas = document.getElementById(options.canvasId).getContext('2d');
 	this.options = {

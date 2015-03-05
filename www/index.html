@@ -35,137 +35,54 @@
 		<script src="js/color_luminance.js"></script>
 		<script src="js/led_table.js"></script>
 		<script>
-			var cnv = document.getElementById('cnv').getContext('2d'), i;
+			var cnv = document.getElementById('cnv').getContext('2d'),
+				i,
+				shift = 0;
+			cnv.fillStyle = "#333";
+			cnv.fillRect(0, 0, 9999, 9999);
 
-			var row1 = [
-				new LedString(70, 270, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(70, 320, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(830, 270, '#dd0', 5, 2.5, 1.5, 5),
-				new LedString(1070, 270, '#dd0', 5, 2.5, 1.5, 5),
-				new LedString(1310, 270, '#dd0', 5, 2.5, 1.5, 3),
-				new LedString(1470, 270, '#dd0', 5, 2.5, 1.5, 10)
+			var rows = [
+				new LedTableRow(70, shift + 270, '#dd0', 5, 2.5, 1.5),
+				new LedTableRow(70, shift + 390, '#dd0', 5, 2.5, 1.5),
+				new LedTableRow(70, shift + 510, '#dd0', 5, 2.5, 1.5),
+				new LedTableRow(70, shift + 630, '#dd0', 5, 2.5, 1.5),
+				new LedTableRow(70, shift + 750, '#dd0', 5, 2.5, 1.5)
 			];
-			row1[0].setValue('ДИРЕКЦИЯ БЛИЗКО');
-			row1[1].setValue('');
-			row1[2].setValue('13:00');
-			row1[3].setValue('13:00');
-			row1[4].setValue('438');
-			row1[5].setValue('ОТБЫЛ');
-			for (i = 0; i < row1.length; i++) {
-				row1[i].show(cnv);
-			}
-
-			row1 = [
-				new LedString(70, 390, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(70, 440, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(830, 390, '#dd0', 5, 2.5, 1.5, 5),
-				new LedString(1070, 390, '#dd0', 5, 2.5, 1.5, 5),
-				new LedString(1310, 390, '#dd0', 5, 2.5, 1.5, 3),
-				new LedString(1470, 390, '#0d0', 5, 2.5, 1.5, 10)
-			];
-			row1[0].setValue('СЛУЖБА ДИРЕКТОРА');
-			row1[1].setValue('ПО ИНТЕРНЕТ');
-			row1[2].setValue('13:30');
-			row1[3].setValue('13:30');
-			row1[4].setValue('433');
-			row1[5].setValue('ПРИБЫЛ');
-			for (i = 0; i < row1.length; i++) {
-				row1[i].show(cnv);
-			}
-
-			row1 = [
-				new LedString(70, 510, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(70, 560, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(830, 510, '#dd0', 5, 2.5, 1.5, 5),
-				new LedString(1070, 510, '#d00', 5, 2.5, 1.5, 5),
-				new LedString(1310, 510, '#dd0', 5, 2.5, 1.5, 3),
-				new LedString(1470, 510, '#d00', 5, 2.5, 1.5, 10)
-			];
-			row1[0].setValue('ФИНАНСОВАЯ СЛУЖБА');
-			row1[1].setValue('');
-			row1[2].setValue('14:00');
-			row1[3].setValue('14:15');
-			row1[4].setValue('246');
-			row1[5].setValue('ОПАЗДЫВАЕТ');
-			for (i = 0; i < row1.length; i++) {
-				row1[i].show(cnv);
-			}
-
-			row1 = [
-				new LedString(70, 630, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(70, 680, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(830, 630, '#dd0', 5, 2.5, 1.5, 5),
-				new LedString(1070, 630, '#dd0', 5, 2.5, 1.5, 5),
-				new LedString(1310, 630, '#dd0', 5, 2.5, 1.5, 3),
-				new LedString(1470, 630, '#dd0', 5, 2.5, 1.5, 10)
-			];
-			row1[0].setValue('СОРТИРОВКА');
-			row1[1].setValue('ФУРШЕТ');
-			row1[2].setValue('15:00');
-			row1[3].setValue('15:00');
-			row1[4].setValue('125');
-			row1[5].setValue('');
-			for (i = 0; i < row1.length; i++) {
-				row1[i].show(cnv);
-			}
-
-			row1 = [
-				new LedString(70, 750, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(70, 800, '#dd0', 5, 2.5, 1.5, 18),
-				new LedString(830, 750, '#dd0', 5, 2.5, 1.5, 5),
-				new LedString(1070, 750, '#dd0', 5, 2.5, 1.5, 5),
-				new LedString(1310, 750, '#dd0', 5, 2.5, 1.5, 3),
-				new LedString(1470, 750, '#dd0', 5, 2.5, 1.5, 10)
-			];
-			row1[0].setValue('ПУЛЬС-ЦЕН СИТИ');
-			row1[1].setValue('');
-			row1[2].setValue('15:30');
-			row1[3].setValue('15:30');
-			row1[4].setValue('133');
-			row1[5].setValue('');
-			for (i = 0; i < row1.length; i++) {
-				row1[i].show(cnv);
+			for (i = 0; i < rows.length; i++) {
+				rows[i].show(cnv);
 			}
 
 			cnv.fillStyle = "#fff";
 			cnv.font = "bold 25pt Arial";
-			cnv.fillText("Пункт назначения", 85, 210);
-			cnv.fillText("Прибытие", 845, 210);
-			cnv.fillText("Ожидается", 1075, 210);
-			cnv.fillText("Путь", 1325, 210);
-			cnv.fillText("Статус", 1485, 210);
-			cnv.fillRect(70, 160, 1795, 5);
-			cnv.fillRect(70, 240, 1795, 5);
+			cnv.fillText("Пункт назначения", 85, shift + 215);
+			cnv.fillText("Прибытие", 845, shift + 215);
+			cnv.fillText("Ожидается", 1075, shift + 215);
+			cnv.fillText("Статус", 1485, shift + 215);
+			cnv.fillText("Корп/Этаж", 1285, shift + 215);
+			cnv.fillRect(70, shift + 160, 1795, 5);
+			cnv.fillRect(70, shift + 240, 1795, 5);
+			cnv.fillRect(70, shift + 870, 1795, 5);
 
-			var time = new LedString(1475, 50, '#dd0', 10, 5, 4, 5);
+			var time = new LedString(1475, shift + 35, '#0f0', 10, 5, 4, 5);
+			var date = new LedString(70, shift + 35, '#0f0', 10, 5, 4, 10);
 			var timeVal = new Date();
+			var dots = true;
 			time.setValue(timeVal.toTimeString().substr(0, 5));
+			date.setValue('08/03/2015');
 			time.show(cnv);
+			date.show(cnv);
+			var clock = setInterval(function() {
+				var timeVal = new Date(), newVal = timeVal.toTimeString().substr(0, 5);
+				if (dots) {
+					newVal = newVal.replace(':', ' ');
+				}
+				dots = !dots;
+				time.setValue(newVal);
+				time.show(cnv)
+			}, 1000);
 
 
-			/*var string = new LedString(300, 300, '#dd0', 5, 2.5, 1.5, 30);
-			string.setValue('  АБАК-ПРЕСС-ЖЕЛЕЗНЫЕ-ДОРОГИ');
-			string.show(cnv);
-			var string2 = new LedString(300, 370, '#d00', 5, 2.5, 1.5, 30);
-			string2.setValue('       ПРАЗДНИЧНЫЙ РЕЙС');
-			string2.show(cnv);
-
-			document.getElementById('string1').onkeyup = function() {
-				string.setValue(this.value);
-				string.show(cnv);
-			};
-			document.getElementById('string2').onkeyup = function() {
-				string2.setValue(this.value);
-				string2.show(cnv);
-			};
-			document.getElementById('color1').onchange = function() {
-				string.setColor(this.value);
-				string.show(cnv);
-			};
-			document.getElementById('color2').onchange = function() {
-				string2.setColor(this.value);
-				string2.show(cnv);
-			};*/
+			var s = new WebSocket('ws://apzd.railsc.ru:6789/broadcast');
 		</script>
 	</body>
 </html>
