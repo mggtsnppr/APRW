@@ -38,8 +38,6 @@
 			var cnv = document.getElementById('cnv').getContext('2d'),
 				i,
 				shift = 0;
-			cnv.fillStyle = "#333";
-			cnv.fillRect(0, 0, 9999, 9999);
 
 			var rows = [
 				new LedTableRow(70, shift + 270, '#dd0', 5, 2.5, 1.5),
@@ -80,7 +78,6 @@
 				time.setValue(newVal);
 				time.show(cnv)
 			}, 1000);
-
 
 			var s = new WebSocket('ws://apzd.railsc.ru:6789/broadcast');
 		</script>
